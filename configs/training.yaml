@@ -1,0 +1,53 @@
+# Training Hyperparameters Configuration
+
+training:
+  # Sequence and batch settings
+  max_seq_length: 2048
+  per_device_batch_size: 32
+  gradient_accumulation_steps: 4
+
+  # Training duration
+  epochs: 4
+
+  # Optimizer settings
+  learning_rate: 1.0e-4
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  max_grad_norm: 0.8
+  optimizer: "adamw_torch_fused"
+  lr_scheduler: "cosine"
+
+  # LoRA (Low-Rank Adaptation) parameters
+  lora:
+    r: 16
+    alpha: 16
+    dropout: 0.05
+    target_modules:
+      - "q_proj"
+      - "k_proj"
+      - "v_proj"
+      - "o_proj"
+      - "gate_proj"
+      - "up_proj"
+      - "down_proj"
+
+  # Precision and performance
+  bf16: true
+  tf32: true
+
+  # Logging and checkpointing
+  logging_steps: 10
+  eval_strategy: "epoch"
+  save_strategy: "epoch"
+  save_total_limit: 2
+
+  # Distributed training
+  ddp_backend: "nccl"
+  ddp_timeout: 3600
+  dataloader_num_workers: 2
+
+  # Data sampling
+  label_1_ratio: 0.8  # Ratio of answerable questions (80%)
+
+  # Reproducibility
+  seed: 42

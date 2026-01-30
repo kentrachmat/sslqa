@@ -1,0 +1,128 @@
+# ====================
+# Environment & Secrets
+# ====================
+.env
+*.key
+*.pem
+credentials.json
+secrets/
+
+# ====================
+# Data Files (Large)
+# ====================
+*.csv
+*.jsonl
+*.json
+!configs/*.yaml
+!*.json  # Keep package.json, etc
+data/raw/
+data/augmented/
+embeddings/
+*.npy
+*.npz
+
+# ====================
+# Models (Very Large)
+# ====================
+models/
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+
+# ====================
+# Experiment Outputs
+# ====================
+experiments/
+runs_unsloth*/
+unsloth_compiled_cache/
+wandb/
+*.log
+
+# ====================
+# Python
+# ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# ====================
+# Jupyter
+# ====================
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# ====================
+# IDEs
+# ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.DS_Store
+Thumbs.db
+
+# ====================
+# Testing
+# ====================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ====================
+# Logs & Temporary Files
+# ====================
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# ====================
+# Archive (keep structure, ignore contents)
+# ====================
+archive/
+
+# ====================
+# Results (selective)
+# ====================
+# Keep aggregated results, ignore individual run CSVs
+results/**/*.csv
+results/**/*.jsonl
+!results/**/all_evaluation.csv
+!results/**/all_result.csv
+# Detailed documentation - not in git
+README_DETAILED.md
+SETUP_DETAILED.md

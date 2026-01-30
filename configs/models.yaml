@@ -1,0 +1,28 @@
+# Model Configuration
+# Environment variables can be used with ${VAR_NAME} syntax
+
+models:
+  qwen:
+    name: "Qwen2.5-7B-Instruct"
+    path: "${MODELS_DIR}/Qwen2.5-7B-Instruct"
+    architecture: "qwen"
+
+  llama:
+    name: "Meta-Llama-3.1-8B-Instruct"
+    path: "${MODELS_DIR}/Meta-Llama-3.1-8B-Instruct"
+    architecture: "llama"
+
+  llama_70b:
+    name: "Meta-Llama-3.1-70B-Instruct"
+    path: "${MODELS_DIR}/Meta-Llama-3.1-70B-Instruct"
+    architecture: "llama"
+    use_case: "augmentation"
+
+  embedding:
+    name: "qwen3-embedding-0.6B"
+    path: "${MODELS_DIR}/qwen3-embedding-0.6B"
+    use_case: "evaluation"
+
+# Default paths (can be overridden by environment variables)
+defaults:
+  models_dir: "./models"

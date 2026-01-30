@@ -1,0 +1,33 @@
+# Paths Configuration
+# Use ${VAR} for environment variable substitution
+
+paths:
+  # Data directories
+  data_root: "./data"
+
+  datasets:
+    squad:
+      raw: "${data_root}/raw/squad_v2"
+      processed: "${data_root}/processed/squad_v2_final"
+      augmented: "${data_root}/augmented/squad"
+
+    pubmed:
+      raw: "${data_root}/raw/pubmed"
+      processed: "${data_root}/processed/pubmed_final"
+      augmented: "${data_root}/augmented/pubmed"
+
+  # Experiment outputs
+  experiments_root: "./experiments"
+  training_runs: "${experiments_root}/training_runs"
+  evaluation_results: "${experiments_root}/evaluation_results"
+  annotations: "${experiments_root}/annotations"
+  logs: "${experiments_root}/logs"
+
+  # Final results (for paper)
+  results_root: "./results"
+
+  # Models
+  models_root: "./models"
+
+  # Archive (old runs, legacy data)
+  archive_root: "./archive"

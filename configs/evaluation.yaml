@@ -1,0 +1,50 @@
+# Evaluation Configuration
+
+evaluation:
+  # Inference parameters
+  batch_size: 64
+  max_new_tokens: 64
+  max_input_tokens: 3500
+  temperature: 0.0
+  top_p: 1.0
+  do_sample: false
+
+  # Metrics to compute
+  metrics:
+    - "exact_match"
+    - "f1"
+    - "semantic_similarity"
+    - "unanswerable_rate"
+
+  # Semantic similarity settings
+  similarity:
+    embedding_model: "embedding"  # Reference to models.yaml
+    metric: "cosine"
+    cache_embeddings: true
+
+# Dataset-specific prompts
+prompts:
+  squad:
+    system: |
+      You are a careful assistant for extractive question answering. Answer in English only.
+      Answer using only the given context. If the answer is not present, reply exactly: 'unanswerable'.
+
+    user_template: |
+      Context:
+      {context}
+
+      Question: {question}
+      Answer:
+
+  pubmed:
+    system: |
+      You are a careful assistant for question answering. Answer in English only.
+      You must answer using only the provided context.
+      State your answer clearly as 'yes', 'no', or 'unanswerable'.
+
+    user_template: |
+      Context:
+      {context}
+
+      Question: {question}
+      Answer:

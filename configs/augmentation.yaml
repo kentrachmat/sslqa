@@ -1,0 +1,63 @@
+# Data Augmentation Configuration
+
+augmentation:
+  # Model for augmentation (typically larger model like 70B)
+  model: "llama_70b"
+
+  # Generation parameters
+  max_new_tokens: 256
+  max_input_tokens: 3072
+  max_context_tokens: 1024
+  temperature: 0.6
+  top_p: 0.9
+  seed: 42
+
+  # Batch processing
+  batch_size: 16
+  flush_every: 50
+  use_fsync: true
+
+  # vLLM settings
+  gpu_memory_utilization: 0.75
+
+  # Number of augmentations per original example
+  n_calls_per_type: 2
+
+  # Augmentation types
+  types:
+    - "semantic"    # Different aspects of the context
+    - "syntactic"   # Different grammar/structure
+    - "lexical"     # Different vocabulary/phrasing
+
+# System prompts for different augmentation types
+prompts:
+  semantic: |
+    You are given a context and an original question-answer pair.
+    Create exactly 1 new question-short answer pair that asks about a different facet of the context (not a paraphrase).
+    You need to be creative.
+
+    Return the result strictly in JSON with the following structure:
+    {
+      "questions": ["..."],
+      "answers":   ["..."]
+    }
+
+  syntactic: |
+    You are given a context and an original question-answer pair.
+    Rewrite the question using different grammatical structure or sentence construction while preserving the same meaning and answer.
+
+    Return the result strictly in JSON with the following structure:
+    {
+      "questions": ["..."],
+      "answers":   ["..."]
+    }
+
+  lexical: |
+    You are given a context and an original question-answer pair.
+    Rephrase the question using different vocabulary and word choices while maintaining the same meaning and answer.
+
+    Return the result strictly in JSON with the following structure:
+    {
+      "questions": ["..."],
+      "answers":   ["..."]
+    }
